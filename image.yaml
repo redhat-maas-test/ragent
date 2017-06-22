@@ -6,19 +6,19 @@ dogen:
     version: "2.0.1"
     ssl_verify: false
 cmd:
-    - "node"
-    - "/opt/app-root/src/ragent.js"
+    - "/opt/ragent/bin/launch.sh"
 
 sources:
     - artifact: ragent-latest.tar.gz
 packages:
-    - npm
-    - nodejs
+    - rh-nodejs4
 
 scripts:
     - package: router-agent
       exec: install
-
+    - package: router-agent
+      exec: prepare.sh
+      user: 185
 envs:
     - name: "NODE_PATH"
       value: "/usr/lib/node_modules"
